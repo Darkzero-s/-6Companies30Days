@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, vector<int>& numsDivide) {
+        sort(nums.begin(),nums.end());
+        sort(numsDivide.begin(),numsDivide.end());
+        int g=numsDivide[0];
+        for(int i=0;i<numsDivide.size();i++)
+        {
+            g=gcd(g,numsDivide[i]);
+        }
+        for(int j=0;j<nums.size() && nums[j] <=g ;j++)
+        {
+            if(g%nums[j]==0) return j;
+        }
+        return -1;
+    }
+};
